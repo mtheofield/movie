@@ -86,13 +86,13 @@ const mutation = new GraphQLObjectType({
         deleteClient: {
             type: ClientType,
             args: {
-                id: {
-                    
+                id: {type: GraphQLNonNull(GraphQLID)},
+                },
+                resolve(parent, args) {
+                    return Client.findByIdAndRemove(args.id);
                 }
             }
-        }
-
-    },
+        },
 });
 module.exports = new GraphQLSchema({
     query:RootQuery,
