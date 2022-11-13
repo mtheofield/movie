@@ -1,4 +1,4 @@
-import {gql, useQuery} from '@apollo/client';
+import { useQuery} from '@apollo/client';
 import CLientRow from "./ClientRow";
 import { GET_CLIENTS } from '../queries/clientQuery';
 
