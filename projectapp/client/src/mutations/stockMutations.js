@@ -1,23 +1,23 @@
 import { gql } from '@apollo/client';
 
-const ADD_PROJECT = gql`
-  mutation AddProject(
+const ADD_STOCK = gql`
+  mutation AddStock(
     $name: String!
     $description: String!
-    $status: ProjectStatus!
-    $clientId: ID!
+    $status: StockStatus!
+    $stockId: ID!
   ) {
-    addProject(
+    addStock(
       name: $name
       description: $description
       status: $status
-      clientId: $clientId
+      stockId: $stockId
     ) {
       id
       name
       description
       status
-      client {
+      member {
         id
         name
         email
@@ -27,22 +27,22 @@ const ADD_PROJECT = gql`
   }
 `;
 
-const DELETE_PROJECT = gql`
-  mutation DeleteProject($id: ID!) {
-    deleteProject(id: $id) {
+const DELETE_STOCK = gql`
+  mutation DeleteStock($id: ID!) {
+    deleteStock(id: $id) {
       id
     }
   }
 `;
 
-const UPDATE_PROJECT = gql`
-  mutation UpdateProject(
+const UPDATE_STOCK = gql`
+  mutation UpdateStock(
     $id: ID!
     $name: String!
     $description: String!
-    $status: ProjectStatusUpdate!
+    $status: StockStatusUpdate!
   ) {
-    updateProject(
+    updateStock(
       id: $id
       name: $name
       description: $description
@@ -52,7 +52,7 @@ const UPDATE_PROJECT = gql`
       name
       description
       status
-      client {
+      member {
         id
         name
         email
@@ -62,4 +62,4 @@ const UPDATE_PROJECT = gql`
   }
 `;
 
-export { ADD_PROJECT, DELETE_PROJECT, UPDATE_PROJECT };
+export { ADD_STOCK, DELETE_STOCK, UPDATE_STOCK };

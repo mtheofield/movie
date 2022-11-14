@@ -1,22 +1,22 @@
 import { useState } from 'react';
 import { FaUser } from 'react-icons/fa';
 import { useMutation } from '@apollo/client';
-import { ADD_CLIENT } from '../mutations/clientMutations';
-import { GET_CLIENTS } from '../queries/clientQueries';
+import { ADD_MEMBER } from '../mutations/memberMutations';
+import { GET_MEMBERS } from '../queries/memberQueries';
 
-export default function AddClientModal() {
+export default function AddMemberModal() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
 
-  const [addClient] = useMutation(ADD_CLIENT, {
+  const [addMember] = useMutation(ADD_MEMBER, {
     variables: { name, email, phone },
-    update(cache, { data: { addClient } }) {
-      const { clients } = cache.readQuery({ query: GET_CLIENTS });
+    update(cache, { data: { addMember } }) {
+      const { members } = cache.readQuery({ query: GET_MEMBERS });
 
       cache.writeQuery({
-        query: GET_CLIENTS,
-        data: { clients: [...clients, addClient] },
+        query: GET_MEMBERS,
+        data: { members: [...members, addMember] },
       });
     },
   });
@@ -28,7 +28,7 @@ export default function AddClientModal() {
       return alert('Please fill in all fields');
     }
 
-    addClient(name, email, phone);
+    addMember(name, email, phone);
 
     setName('');
     setEmail('');
@@ -39,27 +39,27 @@ export default function AddClientModal() {
     <>
       <button
         type='button'
-        className='btn btn-secondary'
+        className='btn btn-primary'
         data-bs-toggle='modal'
-        data-bs-target='#addClientModal'
+        data-bs-target='#addMemberModal'
       >
         <div className='d-flex align-items-center'>
           <FaUser className='icon' />
-          <div>Add Client</div>
+          <div>Add Member</div>
         </div>
       </button>
 
       <div
         className='modal fade'
-        id='addClientModal'
-        aria-labelledby='addClientModalLabel'
+        id='addMemberModal'
+        aria-labelledby='addMemberModalLabel'
         aria-hidden='true'
       >
         <div className='modal-dialog'>
           <div className='modal-content'>
             <div className='modal-header'>
-              <h5 className='modal-title' id='addClientModalLabel'>
-                Add Client
+              <h5 className='modal-title' id='addMemberModalLabel'>
+                Add Member
               </h5>
               <button
                 type='button'

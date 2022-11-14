@@ -1,5 +1,5 @@
-const Project = require('../models/Project');
-const Client = require('../models/Client');
+const Stock = require('../models/Stock');
+const Member = require('../models/Member');
 
 const {
   GraphQLObjectType,
@@ -11,26 +11,26 @@ const {
   GraphQLEnumType,
 } = require('graphql');
 
-// Project Type
-const ProjectType = new GraphQLObjectType({
-  name: 'Project',
+// Stock Type
+const StockType = new GraphQLObjectType({
+  name: 'Stock',
   fields: () => ({
     id: { type: GraphQLID },
     name: { type: GraphQLString },
     description: { type: GraphQLString },
     status: { type: GraphQLString },
-    client: {
-      type: ClientType,
+    member: {
+      type: MemberType,
       resolve(parent, args) {
-        return Client.findById(parent.clientId);
+        return Member.findById(parent.stockId);
       },
     },
   }),
 });
 
-// Client Type
-const ClientType = new GraphQLObjectType({
-  name: 'Client',
+// Member Type
+const MemberType = new GraphQLObjectType({
+  name: 'Member',
   fields: () => ({
     id: { type: GraphQLID },
     name: { type: GraphQLString },
@@ -42,30 +42,30 @@ const ClientType = new GraphQLObjectType({
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
   fields: {
-    projects: {
-      type: new GraphQLList(ProjectType),
+    stocks: {
+      type: new GraphQLList(StockType),
       resolve(parent, args) {
-        return Project.find();
+        return Stock.find();
       },
     },
-    project: {
-      type: ProjectType,
+    stocks: {
+      type: StockType,
       args: { id: { type: GraphQLID } },
       resolve(parent, args) {
-        return Project.findById(args.id);
+        return Stock.findById(args.id);
       },
     },
-    clients: {
-      type: new GraphQLList(ClientType),
+    members: {
+      type: new GraphQLList(MemberType),
       resolve(parent, args) {
-        return Client.find();
+        return Member.find();
       },
     },
-    client: {
-      type: ClientType,
+    member: {
+      type: MemberType,
       args: { id: { type: GraphQLID } },
       resolve(parent, args) {
-        return Client.findById(args.id);
+        return Member.findById(args.id);
       },
     },
   },
@@ -75,100 +75,100 @@ const RootQuery = new GraphQLObjectType({
 const mutation = new GraphQLObjectType({
   name: 'Mutation',
   fields: {
-    // Add a client
-    addClient: {
-      type: ClientType,
+    // Add a member
+    addMember: {
+      type: MemberType,
       args: {
         name: { type: GraphQLNonNull(GraphQLString) },
         email: { type: GraphQLNonNull(GraphQLString) },
         phone: { type: GraphQLNonNull(GraphQLString) },
       },
       resolve(parent, args) {
-        const client = new Client({
+        const member = new Member({
           name: args.name,
           email: args.email,
           phone: args.phone,
         });
 
-        return client.save();
+        return member.save();
       },
     },
-    // Delete a client
-    deleteClient: {
-      type: ClientType,
+    // Delete a member
+    deleteMember: {
+      type: MemberType,
       args: {
         id: { type: GraphQLNonNull(GraphQLID) },
       },
       resolve(parent, args) {
-        Project.find({ clientId: args.id }).then((projects) => {
-          projects.forEach((project) => {
-            project.remove();
+        Stock.find({ stockId: args.id }).then((stocks) => {
+          stocks.forEach((stock) => {
+            stock.remove();
           });
         });
 
-        return Client.findByIdAndRemove(args.id);
+        return Member.findByIdAndRemove(args.id);
       },
     },
-    // Add a project
-    addProject: {
-      type: ProjectType,
+    // Add a stock
+    addStock: {
+      type: StockType,
       args: {
         name: { type: GraphQLNonNull(GraphQLString) },
         description: { type: GraphQLNonNull(GraphQLString) },
         status: {
           type: new GraphQLEnumType({
-            name: 'ProjectStatus',
+            name: 'StockStatus',
             values: {
-              new: { value: 'Not Started' },
-              progress: { value: 'In Progress' },
-              completed: { value: 'Completed' },
+              new: { value: 'Not In' },
+              progress: { value: 'In Stock' },
+              completed: { value: 'Finished' },
             },
           }),
-          defaultValue: 'Not Started',
+          defaultValue: 'In Stock',
         },
-        clientId: { type: GraphQLNonNull(GraphQLID) },
+        stockId: { type: GraphQLNonNull(GraphQLID) },
       },
       resolve(parent, args) {
-        const project = new Project({
+        const stock = new Stock({
           name: args.name,
           description: args.description,
           status: args.status,
-          clientId: args.clientId,
+          stockId: args.stockId,
         });
 
-        return project.save();
+        return stock.save();
       },
     },
-    // Delete a project
-    deleteProject: {
-      type: ProjectType,
+    // Delete a stock
+    deleteStock: {
+      type: StockType,
       args: {
         id: { type: GraphQLNonNull(GraphQLID) },
       },
       resolve(parent, args) {
-        return Project.findByIdAndRemove(args.id);
+        return Stock.findByIdAndRemove(args.id);
       },
     },
-    // Update a project
-    updateProject: {
-      type: ProjectType,
+    // Update a stock
+    updateStock: {
+      type: StockType,
       args: {
         id: { type: GraphQLNonNull(GraphQLID) },
         name: { type: GraphQLString },
         description: { type: GraphQLString },
         status: {
           type: new GraphQLEnumType({
-            name: 'ProjectStatusUpdate',
+            name: 'StockStatusUpdate',
             values: {
-              new: { value: 'Not Started' },
-              progress: { value: 'In Progress' },
-              completed: { value: 'Completed' },
+              new: { value: 'Not In' },
+              progress: { value: 'In Stock' },
+              completed: { value: 'Finished' },
             },
           }),
         },
       },
       resolve(parent, args) {
-        return Project.findByIdAndUpdate(
+        return Stock.findByIdAndUpdate(
           args.id,
           {
             $set: {

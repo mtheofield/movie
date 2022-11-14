@@ -1,78 +1,78 @@
-const projects = [
+const stock = [
     {
       id: '1',
-      clientId: '1',
-      name: 'eCommerce Website',
+      stockId: '1',
+      name: 'Shampoo',
       description:
         'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu.',
-      status: 'In Progress',
+      status: 'In Stock',
     },
     {
       id: '2',
-      clientId: '2',
-      name: 'Dating App',
+      stockId: '2',
+      name: 'Body Wash',
       description:
         'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu.',
-      status: 'In Progress',
+      status: 'In Stock',
     },
     {
       id: '3',
-      clientId: '3',
-      name: 'SEO Project',
+      stockId: '3',
+      name: 'Conditioner',
       description:
         'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu.',
-      status: 'In Progress',
+      status: 'In Stock',
     },
     {
       id: '4',
-      clientId: '4',
-      name: 'Design Prototype',
+      stockId: '4',
+      name: 'Soap',
       description:
         'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu.',
-      status: 'Done',
+      status: 'In Stock',
     },
     {
       id: '5',
-      clientId: '5',
-      name: 'Auction Website',
+      stockId: '5',
+      name: 'Deodurant',
       description:
         'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu.',
-      status: 'In Progress',
+      status: 'In Stock',
     },
   ];
   
-  // Clients
-  const clients = [
+  // members
+  const members = [
     {
       id: '1',
-      name: 'Tony Stark',
-      email: 'ironman@gmail.com',
-      phone: '343-567-4333',
+      name: 'Greg Thomas',
+      email: 'gregthomas@gmail.com',
+      phone: '567-123-4321',
     },
     {
       id: '2',
-      name: 'Natasha Romanova',
-      email: 'blackwidow@gmail.com',
-      phone: '223-567-3322',
+      name: 'Jessica Sim',
+      email: 'jessicasim@gmail.com',
+      phone: '754-653-9203',
     },
     {
       id: '3',
-      name: 'Thor Odinson',
-      email: 'thor@gmail.com',
-      phone: '324-331-4333',
+      name: 'Mary Chen',
+      email: 'marychen@gmail.com',
+      phone: '261-374-1274',
     },
     {
       id: '4',
-      name: 'Steve Rogers',
-      email: 'steve@gmail.com',
-      phone: '344-562-6787',
+      name: 'Candice Yu',
+      email: 'candiceyu@gmail.com',
+      phone: '923-728-2946',
     },
     {
       id: '5',
-      name: 'Bruce Banner',
-      email: 'bruce@gmail.com',
-      phone: '321-468-8887',
+      name: 'Olga Fischer',
+      email: 'olgafischer@gmail.com',
+      phone: '1394-573-1632',
     },
   ];
   
-  module.exports = { projects, clients };
+  module.exports = { members, stock };
