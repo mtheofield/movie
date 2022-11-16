@@ -1,27 +1,27 @@
-import { ApolloServer } from 'apollo-server-express';
-import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core';
-import express from 'express';
-import http from 'http';
+// import { ApolloServer } from 'apollo-server-express';
+// import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core';
+// import express from 'express';
+// import http from 'http';
 
-async function startApolloServer(typeDefs, resolvers) {
-  const app = express();
-  const cors = require('cors');
+// async function startApolloServer(typeDefs, resolvers) {
+//   const app = express();
+//   const cors = require('cors');
 
-  app.use(cors());
+//   app.use(cors());
 
-  const httpServer = http.createServer(app);
+//   const httpServer = http.createServer(app);
 
-  const server = new ApolloServer({
-    typeDefs,
-    resolvers,
-    plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
-  });
+//   const server = new ApolloServer({
+//     typeDefs,
+//     resolvers,
+//     plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
+//   });
 
-  await server.start();
+//   await server.start();
 
-  server.applyMiddleware({ app });
+//   server.applyMiddleware({ app });
 
-  await new Promise(resolve => httpServer.listen({ port: 4000 }, resolve));
+//   await new Promise(resolve => httpServer.listen({ port: 3000 }, resolve));
 
-  console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`);
-}
+//   console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`);
+// }

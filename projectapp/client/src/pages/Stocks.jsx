@@ -9,7 +9,7 @@ import { GET_STOCK } from '../queries/stockQueries';
 export default function Stock() {
   const { id } = useParams();
   const { loading, error, data } = useQuery(GET_STOCK, { variables: { id } });
-
+// console.log(data)
   if (loading) return <Spinner />;
   if (error) return <p>Uh oh something went wrong</p>;
 
@@ -27,8 +27,8 @@ export default function Stock() {
 
           <h5 className='mt-3'>Stock Status</h5>
           <p className='lead'>{data.stock.status}</p>
-
-          <MemberInfo member={data.stock.member} />
+        {/* console.log(data.stock.member) */}
+          <MemberInfo member={data.stock} />
 
           <EditStockForm stock={data.stock} />
 
