@@ -45,7 +45,7 @@ export default function AddMemberModal() {
       >
         <div className='d-flex align-items-center'>
           <FaUser className='icon' />
-          <div>Add Member</div>
+          <div>Add event contact </div>
         </div>
       </button>
 
@@ -59,7 +59,7 @@ export default function AddMemberModal() {
           <div className='modal-content'>
             <div className='modal-header'>
               <h5 className='modal-title' id='addMemberModalLabel'>
-                Add Member
+                Add New Contact
               </h5>
               <button
                 type='button'

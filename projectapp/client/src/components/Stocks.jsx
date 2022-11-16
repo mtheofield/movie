@@ -18,7 +18,7 @@ export default function Stocks() {
           ))}
         </div>
       ) : (
-        <p>No Stocks</p>
+        <p>There are currently to dos for an event</p>
       )}
     </>
   );

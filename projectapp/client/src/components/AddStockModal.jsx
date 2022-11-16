@@ -60,7 +60,7 @@ export default function AddStockModal() {
           >
             <div className='d-flex align-items-center'>
               <FaList className='icon' />
-              <div>New Friend</div>
+              <div>To Do</div>
             </div>
           </button>
 
