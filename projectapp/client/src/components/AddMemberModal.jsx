@@ -25,7 +25,7 @@ export default function AddMemberModal() {
     e.preventDefault();
 
     if (name === '' || email === '' || phone === '') {
-      return alert('Please fill in all fields');
+      return alert('You must fill in all of the fields');
     }
 
     addMember(name, email, phone);

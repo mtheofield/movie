@@ -1,7 +1,7 @@
-const stock = [
+const stocks = [
     {
       id: '1',
-      stockId: '1',
+      memberId: '1',
       name: 'Shampoo',
       description:
         'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu.',
@@ -9,7 +9,7 @@ const stock = [
     },
     {
       id: '2',
-      stockId: '2',
+      memberId: '2',
       name: 'Body Wash',
       description:
         'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu.',
@@ -17,7 +17,7 @@ const stock = [
     },
     {
       id: '3',
-      stockId: '3',
+      memberId: '3',
       name: 'Conditioner',
       description:
         'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu.',
@@ -25,7 +25,7 @@ const stock = [
     },
     {
       id: '4',
-      stockId: '4',
+      memberId: '4',
       name: 'Soap',
       description:
         'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu.',
@@ -33,7 +33,7 @@ const stock = [
     },
     {
       id: '5',
-      stockId: '5',
+      memberId: '5',
       name: 'Deodurant',
       description:
         'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu.',
@@ -41,7 +41,7 @@ const stock = [
     },
   ];
   
-  // members
+  // members data 
   const members = [
     {
       id: '1',
@@ -75,4 +75,4 @@ const stock = [
     },
   ];
   
-  module.exports = { members, stock };
+  module.exports = { members, stocks };

@@ -7,7 +7,7 @@ export default function Members() {
   const { loading, error, data } = useQuery(GET_MEMBERS);
 
   if (loading) return <Spinner />;
-  if (error) return <p>Something Went Wrong</p>;
+  if (error) return <p>Uh oh something is wrong</p>;
 
   return (
     <>

@@ -8,13 +8,17 @@ import { GET_MEMBERS } from '../queries/memberQueries';
 export default function AddStockModal() {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
-  const [stockId, setStockId] = useState('');
+  const [memberId, setMemberId] = useState('');
   const [status, setStatus] = useState('new');
 
   const [addStock] = useMutation(ADD_STOCK, {
-    variables: { name, description, stockId, status },
+    variables: { name, description, memberId, status },
+
     update(cache, { data: { addStock } }) {
+      // console.log(addStock)
       const { stocks } = cache.readQuery({ query: GET_STOCKS });
+      // const  = cache.readQuery({ query: GET_STOCKS, variables: {name, description, status, stockId }});
+      // console.log(TEST)
       cache.writeQuery({
         query: GET_STOCKS,
         data: { stocks: [...stocks, addStock] },
@@ -22,26 +26,27 @@ export default function AddStockModal() {
     },
   });
 
-  // Get Members for select
+  // Get Members 
   const { loading, error, data } = useQuery(GET_MEMBERS);
 
   const onSubmit = (e) => {
     e.preventDefault();
 
     if (name === '' || description === '' || status === '') {
-      return alert('Please fill in all fields');
+      return alert('You must fill out all fields');
     }
 
-    addStock(name, description, stockId, status);
+    addStock(name, description, memberId, status);
+    // console.log (TEST)
 
     setName('');
     setDescription('');
     setStatus('new');
-    setStockId('');
+    setMemberId('');
   };
 
   if (loading) return null;
-  if (error) return 'Something Went Wrong';
+  if (error) return 'Error something is wrong';
 
   return (
     <>
@@ -55,7 +60,7 @@ export default function AddStockModal() {
           >
             <div className='d-flex align-items-center'>
               <FaList className='icon' />
-              <div>New Stock</div>
+              <div>New Friend</div>
             </div>
           </button>
 
@@ -107,8 +112,8 @@ export default function AddStockModal() {
                         value={status}
                         onChange={(e) => setStatus(e.target.value)}
                       >
-                        <option value='new'>Not In</option>
-                        <option value='progress'>In Stock</option>
+                        <option value='new'>New</option>
+                        <option value='progress'>Progress</option>
                         <option value='finished'>Finished</option>
                       </select>
                     </div>
@@ -116,10 +121,10 @@ export default function AddStockModal() {
                     <div className='mb-3'>
                       <label className='form-label'>Member</label>
                       <select
-                        id='stockId'
+                        id='memberId'
                         className='form-select'
-                        value={stockId}
-                        onChange={(e) => setStockId(e.target.value)}
+                        value={memberId}
+                        onChange={(e) => setMemberId(e.target.value)}
                       >
                         <option value=''>Select Member</option>
                         {data.members.map((member) => (

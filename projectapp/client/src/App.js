@@ -32,7 +32,7 @@ const member = new ApolloClient({
 function App() {
   return (
     <>
-      <ApolloProvider member={member}>
+      <ApolloProvider client={member}>
         <Router>
           <Header />
           <div className='container'>

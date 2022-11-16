@@ -11,14 +11,15 @@ export default function Stock() {
   const { loading, error, data } = useQuery(GET_STOCK, { variables: { id } });
 
   if (loading) return <Spinner />;
-  if (error) return <p>Something Went Wrong</p>;
+  if (error) return <p>Uh oh something went wrong</p>;
 
+  
   return (
     <>
       {!loading && !error && (
         <div className='mx-auto w-75 card p-5'>
           <Link to='/' className='btn btn-light btn-sm w-25 d-inline ms-auto'>
-            Back
+            Take me back
           </Link>
 
           <h1>{data.stock.name}</h1>

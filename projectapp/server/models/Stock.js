@@ -9,7 +9,7 @@ const StockSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ['Not In', 'In Stock', 'Finished'],
+    enum: ['New', 'Progress', 'Finished'],
   },
   stockId: {
     type: mongoose.Schema.Types.ObjectId,

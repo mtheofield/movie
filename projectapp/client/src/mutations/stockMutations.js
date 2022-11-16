@@ -1,17 +1,18 @@
 import { gql } from '@apollo/client';
+//addng a single stock 
 
 const ADD_STOCK = gql`
   mutation AddStock(
     $name: String!
     $description: String!
     $status: StockStatus!
-    $stockId: ID!
+    $memberId: ID!
   ) {
     addStock(
       name: $name
       description: $description
       status: $status
-      stockId: $stockId
+      memberId: $memberId
     ) {
       id
       name
@@ -27,6 +28,8 @@ const ADD_STOCK = gql`
   }
 `;
 
+
+//deleting the stock
 const DELETE_STOCK = gql`
   mutation DeleteStock($id: ID!) {
     deleteStock(id: $id) {
@@ -35,6 +38,7 @@ const DELETE_STOCK = gql`
   }
 `;
 
+//updating to do with stock 
 const UPDATE_STOCK = gql`
   mutation UpdateStock(
     $id: ID!

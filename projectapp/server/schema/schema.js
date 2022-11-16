@@ -9,9 +9,12 @@ const {
   GraphQLList,
   GraphQLNonNull,
   GraphQLEnumType,
+
 } = require('graphql');
 
-// Stock Type
+
+// Setting the stock type
+
 const StockType = new GraphQLObjectType({
   name: 'Stock',
   fields: () => ({
@@ -22,13 +25,15 @@ const StockType = new GraphQLObjectType({
     member: {
       type: MemberType,
       resolve(parent, args) {
-        return Member.findById(parent.stockId);
+        return Member.findById(parent.memberId);
       },
     },
   }),
 });
 
-// Member Type
+
+// setting member type
+
 const MemberType = new GraphQLObjectType({
   name: 'Member',
   fields: () => ({
@@ -48,7 +53,7 @@ const RootQuery = new GraphQLObjectType({
         return Stock.find();
       },
     },
-    stocks: {
+    stock: {
       type: StockType,
       args: { id: { type: GraphQLID } },
       resolve(parent, args) {
@@ -71,11 +76,13 @@ const RootQuery = new GraphQLObjectType({
   },
 });
 
-// Mutations
+
+// setting the mutations
+
 const mutation = new GraphQLObjectType({
   name: 'Mutation',
   fields: {
-    // Add a member
+    // Adding a member
     addMember: {
       type: MemberType,
       args: {
@@ -93,14 +100,15 @@ const mutation = new GraphQLObjectType({
         return member.save();
       },
     },
-    // Delete a member
+
+    // Deleting a member
     deleteMember: {
       type: MemberType,
       args: {
         id: { type: GraphQLNonNull(GraphQLID) },
       },
       resolve(parent, args) {
-        Stock.find({ stockId: args.id }).then((stocks) => {
+        Stock.find({ memberId: args.id }).then((stocks) => {
           stocks.forEach((stock) => {
             stock.remove();
           });
@@ -109,7 +117,8 @@ const mutation = new GraphQLObjectType({
         return Member.findByIdAndRemove(args.id);
       },
     },
-    // Add a stock
+
+    // Adding a stock
     addStock: {
       type: StockType,
       args: {
@@ -119,27 +128,29 @@ const mutation = new GraphQLObjectType({
           type: new GraphQLEnumType({
             name: 'StockStatus',
             values: {
-              new: { value: 'Not In' },
-              progress: { value: 'In Stock' },
-              completed: { value: 'Finished' },
+              new: { value: 'New' },
+              progress: { value: 'Progress' },
+              finished: { value: 'Finished' },
             },
           }),
-          defaultValue: 'In Stock',
+          defaultValue: 'Finished',
         },
-        stockId: { type: GraphQLNonNull(GraphQLID) },
+        memberId: { type: GraphQLNonNull(GraphQLID) },
       },
       resolve(parent, args) {
         const stock = new Stock({
           name: args.name,
           description: args.description,
           status: args.status,
-          stockId: args.stockId,
+          memberId: args.memberId,
         });
 
         return stock.save();
       },
     },
-    // Delete a stock
+
+
+    // Deleting a stock
     deleteStock: {
       type: StockType,
       args: {
@@ -149,7 +160,9 @@ const mutation = new GraphQLObjectType({
         return Stock.findByIdAndRemove(args.id);
       },
     },
-    // Update a stock
+
+
+    // Updating a stock
     updateStock: {
       type: StockType,
       args: {
@@ -160,9 +173,9 @@ const mutation = new GraphQLObjectType({
           type: new GraphQLEnumType({
             name: 'StockStatusUpdate',
             values: {
-              new: { value: 'Not In' },
-              progress: { value: 'In Stock' },
-              completed: { value: 'Finished' },
+              new: { value: 'New' },
+              progress: { value: 'Progress' },
+              finished: { value: 'Finished' },
             },
           }),
         },

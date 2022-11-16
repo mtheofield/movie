@@ -7,8 +7,8 @@ export default function Stocks() {
   const { loading, error, data } = useQuery(GET_STOCKS);
 
   if (loading) return <Spinner />;
-  if (error) return <p>Something Went Wrong</p>;
-
+  if (error) return <p>Uh oh something went wrong</p>;
+// console.log(data)
   return (
     <>
       {data.stocks.length > 0 ? (

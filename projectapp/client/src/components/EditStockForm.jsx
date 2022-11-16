@@ -8,9 +8,9 @@ export default function EditStockForm({ stock }) {
   const [description, setDescription] = useState(stock.description);
   const [status, setStatus] = useState(() => {
     switch (stock.status) {
-      case "Not In":
+      case "New":
         return "new";
-      case "In Stock":
+      case "Progress":
         return "progress";
       case "Finished":
         return "finished";
@@ -18,7 +18,6 @@ export default function EditStockForm({ stock }) {
         throw new Error(`Unknown status: ${stock.status}`);
     }
   });
-
   const [updateStock] = useMutation(UPDATE_STOCK, {
     variables: { id: stock.id, name, description, status },
     refetchQueries: [{ query: GET_STOCK, variables: { id: stock.id } }],
@@ -65,9 +64,9 @@ export default function EditStockForm({ stock }) {
             value={status}
             onChange={(e) => setStatus(e.target.value)}
           >
-            <option value="new">Not In</option>
-            <option value="progress">In Stock</option>
-            <option value="finished">Finished</option>
+            <option value="new">New</option>
+            <option value="progress">Progress</option>
+            <option value="finshed">Finished</option>
           </select>
         </div>
 

@@ -6,6 +6,7 @@ const GET_STOCKS = gql`
       id
       name
       status
+      
     }
   }
 `;
