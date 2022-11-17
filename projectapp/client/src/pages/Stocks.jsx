@@ -1,7 +1,7 @@
 import { Link, useParams } from 'react-router-dom';
 import Spinner from '../components/footer';
 import MemberInfo from '../components/sign-up.js';
-import DeleteStockButton from '../components/comment';
+import DeleteStockButton from '../components/Cart';
 import EditStockForm from '../components/Post';
 import { useQuery } from '@apollo/client';
 import { GET_STOCK } from '../queries/stockQueries';
