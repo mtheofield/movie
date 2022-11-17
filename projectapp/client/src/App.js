@@ -3,9 +3,9 @@ import Header from './components/Header';
 import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
 import Home from './pages/Home';
 import Stock from './pages/About';
-import NotFound from './pages/NotFound';
+import NotFound from './pages/Dashboard';
 import Login from "./pages/Main";
-import Signup from "./pages/Signup";
+import Signup from "./pages/WriteReview";
 
 const cache = new InMemoryCache({
   typePolicies: {
