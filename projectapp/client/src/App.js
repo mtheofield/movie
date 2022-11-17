@@ -1,55 +1,27 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import React from 'react';
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import Header from './components/Header';
-import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
+import Footer from './components/footer'
 import Home from './pages/Home';
-import Stock from './pages/About';
-import NotFound from './pages/Dashboard';
-import Login from "./pages/Main";
-import Signup from "./pages/WriteReview";
+import Dashboard from './pages/Dashboard';
 
-const cache = new InMemoryCache({
-  typePolicies: {
-    Query: {
-      fields: {
-        members: {
-          merge(existing, incoming) {
-            return incoming;
-          },
-        },
-        stocks: {
-          merge(existing, incoming) {
-            return incoming;
-          },
-        },
-      },
-    },
-  },
+
+const client = new ApolloClient({
+  uri: '/graphql',
+  cache: new InMemoryCache(),
 });
-
-const member = new ApolloClient({
-  uri: "/graphql",
-  cache,
-});
-
 
 function App() {
   return (
-    <>
-      <ApolloProvider client={member}>
-        <Router>
-          <Header />
-          <div className='container'>
-            <Routes>
-               <Route  path="/login" element={<Login />}/>
-              <Route  path="/signup"element={<Signup />}/>
-              <Route path='/' element={<Home />} />
-              <Route path='/stocks/:id' element={<Stock />} />
-              <Route path='*' element={<NotFound />} />
-            </Routes>
-          </div>
-        </Router>
-      </ApolloProvider>
-    </>
+    <ApolloProvider client={client}>
+      <div className="flex-column justify-flex-start min-100-vh">
+        <Header />
+        <div className="container">
+          <Home />
+        </div>
+        <Footer />
+      </div>
+    </ApolloProvider>
   );
 }
 
