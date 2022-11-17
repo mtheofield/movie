@@ -1,7 +1,6 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
-import imgBlank from '../components/assets/images/blank.jpg';
-import imgSpinner from '../components/assets/images/spinner.gif';
+
 
 
 import { QUERY_DESTINATIONS } from '../utils/queries';

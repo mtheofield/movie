@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import PropTypes from 'prop-types';
 
 async function loginUser(credentials) {
@@ -14,7 +14,7 @@ async function loginUser(credentials) {
 
 
 const Login = ({ setToken }) => {
-  const history = useHistory();
+  const history = useNavigate();
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
 

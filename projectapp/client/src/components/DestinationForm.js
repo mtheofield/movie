@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { ADD_DESTINATION } from '../utils/mutations.js';
 import { QUERY_DESTINATIONS } from '../utils/queries';
 
 
 const DestinationForm = () => {
-  const history = useHistory();
+  const history = useNavigate();
   
   const [formState, setFormState] = useState({
   });
@@ -66,7 +66,7 @@ const DestinationForm = () => {
       console.log("---> fetch :");
 
       const elImage = document.getElementById('imgCloudinary');
-      elImage.src = imgSpinner;
+      // elImage.src = imgSpinner;
 
 
 
@@ -168,7 +168,7 @@ const DestinationForm = () => {
           </form>
 
           <div className="polaroid-container">
-            <img id="imgCloudinary" className="polaroid" src={imgBlank} alt="" />
+            {/* <img id="imgCloudinary" className="polaroid" src={imgBlank} alt="" /> */}
           </div>
 
 
