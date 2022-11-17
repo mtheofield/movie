@@ -1,18 +1,24 @@
-const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
+const express = require('express');
+const { typeDefs, resolvers } = require('./schema');
 const path = require('path');
 
-const { typeDefs, resolvers } = require('./schema');
+
 const db = require('./config/db');
 const cors  = require('cors');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
 
+async function startApolloServer(typeDefs, resolvers) {
+
 const server = new ApolloServer({
   typeDefs,
   resolvers,
 });
+await server.start();
+
+const app = express();
 
 server.applyMiddleware({ app });
 
@@ -41,3 +47,4 @@ db.once('open', () => {
     console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
   });
 });
+}
