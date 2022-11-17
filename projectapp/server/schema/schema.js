@@ -1,5 +1,5 @@
-const Stock = require('../models/Stock');
-const Member = require('../models/Member');
+const Stock = require('../models/Destination');
+const Member = require('../models');
 
 const {
   GraphQLObjectType,

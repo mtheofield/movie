@@ -1,27 +1,43 @@
-import { ApolloServer } from 'apollo-server-express';
-import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core';
-import express from 'express';
-import http from 'http';
+const express = require('express');
+const { ApolloServer } = require('apollo-server-express');
+const path = require('path');
 
-async function startApolloServer(typeDefs, resolvers) {
-  const app = express();
-  const cors = require('cors');
+const { typeDefs, resolvers } = require('./schema');
+const db = require('./config/db');
+const cors  = require('cors');
 
-  app.use(cors());
+const PORT = process.env.PORT || 3001;
+const app = express();
 
-  const httpServer = http.createServer(app);
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+});
 
-  const server = new ApolloServer({
-    typeDefs,
-    resolvers,
-    plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
-  });
+server.applyMiddleware({ app });
 
-  await server.start();
+app.use(cors());
 
-  server.applyMiddleware({ app });
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
-  await new Promise(resolve => httpServer.listen({ port: 4000 }, resolve));
-
-  console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`);
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/build')));
 }
+
+app.use('/login', (req, res) => {
+  res.send({
+    token: 'test123'
+  });
+});
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
+
+db.once('open', () => {
+  app.listen(PORT, () => {
+    console.log(`API server running on port ${PORT}!`);
+    console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
+  });
+});
