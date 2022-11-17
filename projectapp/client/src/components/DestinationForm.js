@@ -51,12 +51,10 @@ const DestinationForm = () => {
     }
   };
 
-
-
   const handleChange = (event) => {
     const { name, value } = event.target;
 
-    if (name === 'description' && value.length <= 280) {
+    if (name === 'description' && value.length <= 300) {
       setFormState({ ...formState, [name]: value });
       setCharacterCount(value.length);
     } else if (name !== 'description') {
