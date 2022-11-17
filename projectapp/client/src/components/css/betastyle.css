@@ -13,18 +13,6 @@ body {
     background-color: white;
 }
 
-.polaroid {
-    background-color: #fff;
-    padding: 15px 15px 65px 15px;
-    border-radius: 10px;
-    /*// width: 150px;*/
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.polaroid {
-    width: 120%;
-}
-
 .polaroid-container {
     width: 50%;
     display: flex;
@@ -55,14 +43,14 @@ body {
 }
 
 .header-blue-top{
-    background-color: steelblue;
+    background-color: rgb(43, 8, 40);
     margin: 0px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     z-index: 100;
 }
 
 .header-blue{
-    background-color: lightblue;
+    background-color: rgb(61, 59, 59);
     height: 50px;
     border-radius: 0 0 15px 15px;
     margin: 0;
@@ -93,7 +81,7 @@ font-weight: normal;
     color: white;
     padding: 10px;
     font-size: 150%;
-    background-color: #87ceeb;
+    background-color: #8dc28d;
     border-radius: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 margin: 5px;
@@ -102,10 +90,10 @@ margin: 5px;
 
 .nav-table-cell-active{
 font-weight: bold;
-    color: blue;
+    color: rgb(63, 63, 65);
     padding: 10px;
     font-size: 150%;
-    background-color: white;
+    background-color: rgb(206, 209, 199);
     border-radius: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
@@ -142,12 +130,12 @@ a:hover{
 }
 
 .card-title{
-    background-color: skyblue;
+    background-color: rgb(43, 8, 40);
     color: white;
 }
 
 .btn-add{
-    background-color: steelblue;
+    background-color: #8dc28d;  
 }
 
 .container-center {

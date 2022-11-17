@@ -5,7 +5,7 @@ const Footer = () => {
     <footer className="w-100 mt-auto bg-secondary p-4">
       <div className="container text-center mb-5">
         <h4>
-          Where have your traveled too? 
+          Connect with others on their dream destination
           
         </h4>
       </div>
