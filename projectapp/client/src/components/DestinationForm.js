@@ -8,7 +8,7 @@ import { QUERY_DESTINATIONS } from '../utils/queries';
 
 
 const DestinationForm = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   
   const [formState, setFormState] = useState({
   });
@@ -44,7 +44,7 @@ const DestinationForm = () => {
         imageUrl: '',
       });
 
-      navigate.push('/dashboard');
+      // navigate.push('/dashboard');
 
     } catch (err) {
       console.error(err);
