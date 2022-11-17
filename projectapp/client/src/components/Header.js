@@ -56,8 +56,8 @@ class Header extends Component {
             <Link to="/signup" className="btn btn-link">
               <span className="text-secondary">sign up</span>
             </Link>
-            <Link to="/forum" className="btn btn-link">
-              <span className="text-secondary">stories</span>
+            <Link to="/discussion" className="btn btn-link">
+              <span className="text-secondary">movies</span>
             </Link>
           </section>
         )}

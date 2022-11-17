@@ -1,5 +1,5 @@
 import Members from '../components/review';
-import Stocks from '../components/Stocks';
+import Stocks from '../components/Response';
 import AddMemberModal from '../components/open';
 import AddStockModal from '../components/AddStockModal';
 
