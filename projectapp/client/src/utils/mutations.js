@@ -15,3 +15,4 @@ export const ADD_DESTINATION = gql`
     }
   }
 `;
+

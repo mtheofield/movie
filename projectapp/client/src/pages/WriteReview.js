@@ -8,7 +8,6 @@ import { QUERY_DESTINATIONS } from '../utils/queries';
 const WriteReview = () => {
     const { loading, data } = useQuery(QUERY_DESTINATIONS);
     const destinations = data?.destinations || [];
-
     return (
         <main>
             <div className="flex-row justify-center">

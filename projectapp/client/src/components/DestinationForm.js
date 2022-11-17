@@ -52,50 +52,6 @@ const DestinationForm = () => {
   };
 
 
-  const handleFormSubmit2 = async (event) => {
-    event.preventDefault();
-
-    const url = "https://api.cloudinary.com/v1_1/fullstackdeveloper/image/upload";
-    const files = document.querySelector("[type=file]").files;
-    const formData = new FormData();
-
-    for (let i = 0; i < files.length; i++) {
-      let file = files[i];
-      formData.append("file", file);
-      formData.append("upload_preset", "rpw7hj6v");
-
-      console.log("---> fetch :");
-
-      const elImage = document.getElementById('imgCloudinary');
-      // elImage.src = imgSpinner;
-
-
-
-      fetch(url, {
-        method: "POST",
-        body: formData
-      })
-        .then((response) => {
-          return response.text();
-        })
-        .then((data) => {
-          const imageData = JSON.parse(data);
-
-          console.log(imageData.secure_url);
-
-          const elImage = document.getElementById('imgCloudinary');
-          //const elImageUrl = document.getElementById('imageUrl');
-          elImage.src = imageData.secure_url;
-
-          //setNativeValue(document.getElementById('imageUrl'), imageData.secure_url);
-          setFormState({
-            ...formState,
-            imageUrl: imageData.secure_url,
-          })
-
-        });
-    }
-  };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -159,14 +115,14 @@ const DestinationForm = () => {
 
 
         <div className="form-container">
-          <form className="form-picture"
+          {/* <form className="form-picture"
             id="formImage"
             method="post"
             encType="multipart/form-data"
             onSubmit={handleFormSubmit2}>
             <input type="file" name="files[]" multiple />
             <input type="submit" value="Upload Files" name="submit" />
-          </form>
+          </form> */}
 
           <div className="polaroid-container">
             {/* <img id="imgCloudinary" className="polaroid" src={imgBlank} alt="" /> */}

@@ -21,16 +21,14 @@ export default function Home() {
   return (
     <div>
       <Router>
-        {}
         <DestinationHeader />
-        { }
-        <Route>
-          <Route path="/logout" component={Logout} />
-          <Route path="/dashboard" component={Dashboard} />
-          <Route path="/" exact component={Dashboard} />
-          <Route path="/writeReview" component={WriteReview} />
-          <Route path="/about" component={About} />
-        </Route>
+        <Routes>
+          <Route path="/logout" element={<Logout />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/" exact element={<Dashboard />} />
+          <Route path="/writeReview" element={<WriteReview />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
       </Router>
     </div>
   );

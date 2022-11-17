@@ -6,26 +6,24 @@ import './css/pure-min.css';
 
 async function loginUser(credentials) {
   return fetch("http://localhost:3001/login",
-    {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(credentials)
-    })
-    .then(data => data.json());
+      {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(credentials)
+      })
+      .then(data => data.json())
+      .catch((data) => console.log(data) );
 }
-
-
-const Login = ({ setToken }) => {
-  // const navigate = useNavigate();
+const Login = ({setToken}) => {
+  // const history = useHistory();
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
 
   const handleFormSubmit = async e => {
-    e.preventDefault();
-    const token = await loginUser({ username, password });
-    setToken(token);
+      e.preventDefault();
+      const token = await loginUser({username, password});
+      setToken(token);
   }
-
 
   return (
     <>
@@ -38,7 +36,7 @@ const Login = ({ setToken }) => {
             <fieldset>
               <div className="pure-control-group">
                 <label htmlFor="aligned-username">Username</label>
-                <input type="text" id="aligned-email" placeholder="username"
+                <input type="text" id="aligned-username" placeholder="username"
                   onChange={e => setUsername(e.target.value)} />
               </div>
               <div className="pure-control-group">
@@ -58,12 +56,12 @@ const Login = ({ setToken }) => {
             <fieldset>
               <div className="pure-control-group">
                 <label htmlFor="aligned-username">Username</label>
-                <input type="email" id="aligned-email" placeholder="username"
+                <input type="username" id="aligned-username" placeholder="username"
                   onChange={e => setUsername(e.target.value)} />
               </div>
               <div className="pure-control-group">
                 <label htmlFor="aligned-username">Name</label>
-                <input type="email" id="aligned-email" placeholder="name"
+                <input type="name" id="aligned-name" placeholder="name"
                   onChange={e => setUsername(e.target.value)} />
               </div>
               <div className="pure-control-group">

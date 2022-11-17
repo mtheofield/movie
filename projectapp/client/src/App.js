@@ -4,7 +4,7 @@ import Header from './components/Header';
 import Footer from './components/Footer'
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
-
+import DestinationHeader from "./components/DestinationHeader";
 
 const client = new ApolloClient({
   uri: '/graphql',
@@ -14,14 +14,16 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <div className="flex-column justify-flex-start min-100-vh">
-        <Header />
-        <div className="container">
-          <Home />
+        <div className="flex-column justify-flex-start min-100-vh">
+          <Header />
+
+          <div className="container">
+
+            <Home />
+          </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
-    </ApolloProvider>
+      </ApolloProvider>
   );
 }
 
