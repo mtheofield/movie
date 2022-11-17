@@ -1,4 +1,4 @@
-import Spinner from './Spinner';
+import Spinner from './footer';
 import { useQuery } from '@apollo/client';
 import StockCard from './login';
 import { GET_STOCKS } from '../queries/stockQueries';

@@ -6,34 +6,34 @@ const openSlidesData = [
     {
       content:
         "I love movies about horror",
-      author: "Jessica",
+      movie: "Harry Potter",
       source: "online"
     }, {
       content:
         "You know how they say we only use 10% of our brains? Wedding Crashers what a great movie",
-      author: "Sean",
+      movie: "Batman",
       source: "mobile"
     }, {
       content:
         "What did you think of The Batman .",
-      author: "Andrew",
+      movie: "Wedding Crashers",
       source: "text"
     }, {
       content:
         "There have not been any good comedies lately.",
-      author: "Stephanie",
+      movie: "Titanic",
       source: "mobile"
     }, {
       content:
         "What is your favortie movie",
-      author: "Thomas",
+      movie: "Smile",
       source: "text"
     }, 
   ];
 
 class Descriptions extends Component {
     state = {
-        movies: []
+        features: []
     }
 
     componentDidMount(){
