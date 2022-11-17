@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import Spinner from '../components/Spinner';
-import MemberInfo from '../components/MemberInfo';
+import MemberInfo from '../components/sign-up.js';
 import DeleteStockButton from '../components/DeleteStockButton';
 import EditStockForm from '../components/EditStockForm';
 import { useQuery } from '@apollo/client';
