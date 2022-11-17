@@ -48,3 +48,6 @@ db.once('open', () => {
   });
 });
 }
+
+
+startApolloServer(typeDefs, resolvers)
