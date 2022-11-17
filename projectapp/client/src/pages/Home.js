@@ -1,6 +1,6 @@
-import Members from '../components/review';
+import Members from '../components/DestinationForm';
 import Stocks from '../components/Response';
-import AddMemberModal from '../components/open';
+import AddMemberModal from '../components/logout';
 import AddStockModal from '../components/AddStockModal';
 
 export default function Home() {

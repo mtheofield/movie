@@ -1,4 +1,4 @@
-import Open from './open.js'
+import Open from './logout.js'
 import axios from 'axios'
 import React, { Component } from 'react'
 
