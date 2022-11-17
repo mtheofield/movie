@@ -26,7 +26,7 @@ function DestinationHeader() {
               <td>&nbsp;</td>
               <td>
                 <NavLink activeClassName="nav-table-cell-active" className="nav-table-cell" to="/writeReview">
-                  Create Review
+                 WriteReview   
                 </NavLink>
               </td>
               <td>&nbsp;</td>
