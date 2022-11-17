@@ -4,7 +4,7 @@ import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
 import Home from './pages/Home';
 import Stock from './pages/About';
 import NotFound from './pages/NotFound';
-import Login from "./pages/Login";
+import Login from "./pages/Main";
 import Signup from "./pages/Signup";
 
 const cache = new InMemoryCache({
