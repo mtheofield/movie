@@ -1,59 +1,55 @@
-const { Schema, model } = require("mongoose");
-const bcrypt = require("bcrypt");
+// const { Schema, model } = require("mongoose");
+// const bcrypt = require("bcrypt");
 
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 
-const userSchema = new Schema(
-  {
-    username: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-      match: [/.+@.+\..+/, "Please ensure a valid email address"],
-    },
-    password: {
-      type: String,
-      required: true,
-    },
-    gender: {
-      type: String,
-      required: true,
-    },
-    dob: {
-      type: String,
-      required: true,
-    },
-    savedPodcasts: [Podcast.schema],
-  },
-  {
-    toJSON: {
-      virtuals: true,
-    },
-  }
-);
+// const userSchema = new Schema(
+//   {
+//     username: {
+//       type: String,
+//       required: true,
+//       unique: true,
+//     },
+//     email: {
+//       type: String,
+//       required: true,
+//       unique: true,
+//       match: [/.+@.+\..+/, "Please ensure a valid email address"],
+//     },
+//     password: {
+//       type: String,
+//       required: true,
+//     },
+//     gender: {
+//       type: String,
+//       required: true,
+//     },
+//     dob: {
+//       type: String,
+//       required: true,
+//     },
 
-userSchema.pre("save", async function (next) {
-  if (this.isNew || this.isModified("password")) {
-    const saltRounds = 10;
-    this.password = await bcrypt.hash(this.password, saltRounds);
-  }
+//   },
+//   {
+//     toJSON: {
+//       virtuals: true,
+//     },
+//   }
+// );
 
-  next();
-});
+// userSchema.pre("save", async function (next) {
+//   if (this.isNew || this.isModified("password")) {
+//     const saltRounds = 10;
+//     this.password = await bcrypt.hash(this.password, saltRounds);
+//   }
 
-userSchema.methods.isValidPassword = async function (password) {
-  return bcrypt.compare(password, this.password);
-};
+//   next();
+// });
 
-userSchema.virtual("podcastCount").get(function () {
-  return this.savedPodcasts.length;
-});
+// userSchema.methods.isValidPassword = async function (password) {
+//   return bcrypt.compare(password, this.password);
+// };
 
-const User = model("User", userSchema);
+// const User = model("User", userSchema);
 
-module.exports = User;
+// module.exports = User;

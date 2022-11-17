@@ -1,6 +1,6 @@
 import Members from '../components/Members';
 import Stocks from '../components/Stocks';
-import AddMemberModal from '../components/AddMemberModal';
+import AddMemberModal from '../components/open';
 import AddStockModal from '../components/AddStockModal';
 
 export default function Home() {
