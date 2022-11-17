@@ -1,97 +1,93 @@
-import axios from 'axios'
-import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
+import React, { useState } from 'react';
+import { useHistory } from "react-router-dom";
+import PropTypes from 'prop-types';
 
-class Login extends Component {
-  constructor() {
-    super()
-    this.state = {
-      username: '',
-      password: '',
-      redirectTo: null
-    }
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleChange = this.handleChange.bind(this)
-
-  }
-
-  handleChange(event) {
-    this.setState({
-      [event.target.name]: event.target.value
+async function loginUser(credentials) {
+  return fetch("http://localhost:3001/login",
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(credentials)
     })
-  }
-
-  handleSubmit(event) {
-    event.preventDefault()
-    console.log('handleSubmit')
-
-    axios
-      .post('/user/login', {
-        username: this.state.username,
-        password: this.state.password
-      })
-      .then(response => {
-        console.log('login response: ')
-        console.log(response)
-        if (response.status === 200) {
-          this.props.updateUser({
-            loggedIn: true,
-            username: response.data.username
-          })
-          this.setState({
-            redirectTo: '/forum'
-          })
-        }
-      }).catch(error => {
-        console.log('there was an error logging in ')
-        console.log(error);
-
-      })
-  }
-
-  render() {
-    if (this.state.redirectTo) {
-      return <Redirect to={{ pathname: this.state.redirectTo }} />
-    } else {
-      return (
-        <div className="LogInContainer">
-          <div className="loginCss">
-            <h4>Login</h4>
-            <form className="form-horizontal">
-              <div className="form-group">
-                <label className="form-label" htmlFor="username"></label>
-                <input className="form-input"
-                  type="text"
-                  id="username"
-                  name="username"
-                  placeholder="Username"
-                  value={this.state.username}
-                  onChange={this.handleChange}
-                />
-              </div>
-              <div className="form-group">
-                <label className="form-label" htmlFor="password"></label>
-                <input className="form-input"
-                  placeholder="Password"
-                  type="password"
-                  name="password"
-                  value={this.state.password}
-                  onChange={this.handleChange}
-                />
-              </div>
-              <div className="form-group ">
-                <button
-                  className="btn btn-primary"
-                  id="loginButton"
-                  onClick={this.handleSubmit}
-                  type="submit">Submit</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )
-    }
-  }
+    .then(data => data.json());
 }
 
-export default Login
+
+const Login = ({ setToken }) => {
+  const history = useHistory();
+  const [username, setUsername] = useState();
+  const [password, setPassword] = useState();
+
+  const handleFormSubmit = async e => {
+    e.preventDefault();
+    const token = await loginUser({ username, password });
+    setToken(token);
+  }
+
+
+  return (
+    <>
+      <div className="container-center"><h1>Log In Here</h1></div>
+
+      <div className="login-wrapper">
+        <div className="login-cell">
+          <h3>Existing User</h3>
+          <form className="pure-form pure-form-aligned" onSubmit={handleFormSubmit}>
+            <fieldset>
+              <div className="pure-control-group">
+                <label htmlFor="aligned-username">Username</label>
+                <input type="text" id="aligned-email" placeholder="username"
+                  onChange={e => setUsername(e.target.value)} />
+              </div>
+              <div className="pure-control-group">
+                <label htmlFor="aligned-password">Password</label>
+                <input type="password" id="password" placeholder="password"
+                  onChange={e => setPassword(e.target.value)} />
+              </div>
+              <div className="pure-controls">
+                <button type="submit" className="pure-button pure-button-primary">Submit</button>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+        <div className="login-cell">
+          <h3>New User</h3>
+          <form className="pure-form pure-form-aligned">
+            <fieldset>
+              <div className="pure-control-group">
+                <label htmlFor="aligned-username">Username</label>
+                <input type="email" id="aligned-email" placeholder="username"
+                  onChange={e => setUsername(e.target.value)} />
+              </div>
+              <div className="pure-control-group">
+                <label htmlFor="aligned-username">Name</label>
+                <input type="email" id="aligned-email" placeholder="name"
+                  onChange={e => setUsername(e.target.value)} />
+              </div>
+              <div className="pure-control-group">
+                <label htmlFor="aligned-username">email</label>
+                <input type="email" id="aligned-email" placeholder="email"
+                  onChange={e => setUsername(e.target.value)} />
+              </div>
+              <div className="pure-control-group">
+                <label htmlFor="aligned-password">Password</label>
+                <input type="text" id="password" placeholder="password"
+                  onChange={e => setPassword(e.target.value)} />
+              </div>
+              <div className="pure-controls">
+                <button type="submit" className="pure-button pure-button-secondary">Submit</button>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+
+    </>
+  )
+};
+
+Login.propTypes = {
+  setToken: PropTypes.func.isRequired
+}
+
+export default Login;
