@@ -1,14 +1,50 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
-const Header = () => {
+
+function Header() {
+
+  const location = useLocation();
+  const { pathname } = location;
+  const splitLocation = pathname.split('/');
+  console.log("---> splitLocation :" + (splitLocation[1]));
+
+
   return (
-    <header className="header-blue-top text-light  py-3 flex-row align-center">
-      <div className="container flex-row justify-space-between-lg justify-center align-center">
-        <h1 className="m-0">The world Has so much to offer</h1>
-        <p className="m-0">What desinatons have you been too?</p>
-      </div>
-    </header>
+    <>
+      <header className="header-blue">
+        <nav className="nav-container-top">
+          <table className="nav-table ">
+            <tr className="menu-row">
+              <td>
+                <NavLink activeClassName="nav-table-cell-active" className="nav-table-cell" to="/logout">
+                  Logout
+                </NavLink>
+              </td>
+              <td>&nbsp;</td>
+              <td>
+                <NavLink activeClassName="nav-table-cell-active" className="nav-table-cell" to="/createReview">
+                  Create Review
+                </NavLink>
+              </td>
+              <td>&nbsp;</td>
+              <td>
+                <NavLink activeClassName="nav-table-cell-active" className={splitLocation[1] === "" ? "nav-table-cell-active" : "nav-table-cell"} to="/dashboard">
+                  Dashboard
+                </NavLink>
+              </td>
+              <td>
+                <NavLink activeClassName="nav-table-cell-active" className="nav-table-cell" to="/about">
+                  About
+                </NavLink>
+              </td>
+            </tr>
+          </table>
+        </nav>
+      </header>
+    </>
   );
-};
+}
 
 export default Header;

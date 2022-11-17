@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
 import Home from './pages/Home';
-import Stock from './pages/Stocks';
+import Stock from './pages/About';
 import NotFound from './pages/NotFound';
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
