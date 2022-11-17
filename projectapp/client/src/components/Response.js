@@ -7,7 +7,7 @@ const Response = props => (
         <div className="card-body">
             <p className="card-text">{props.description}</p>
             <p className="card-text">Movie: <strong>{props.movie}</strong></p>
-            <Link to={"/story/" + props.id}  className="btn btn-primary" role="button">Add a review</Link>
+            <Link to={"/film/" + props.id}  className="btn btn-primary" role="button">Add a review</Link>
         </div>
     </li>
 )
