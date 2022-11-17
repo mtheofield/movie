@@ -1,0 +1,541 @@
+.button-success,
+.button-error,
+.button-warning,
+.button-secondary,
+.button-github-repository,
+.button-live-link,
+.button-disabled {
+    color: white;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.button-github-repository {
+    background-color: #F2134F;
+    margin: 2px;
+}
+
+.button-live-link {
+    background: #359AF2;
+    margin: 2px;
+}
+
+.vred {
+    /*border: 1px solid red;*/
+}
+
+body {
+    background-color: #DDD;
+    letter-spacing: 0.75pt;
+    line-height: 1.0;
+    font-family: Verdana, sans-serif;
+
+}
+
+h1, h2, h3, h4, h5, h6 {
+
+}
+
+.profile-name {
+    font-weight: bold;
+    color: #FFF;
+    font-family: "Helvetica Neue", sans-serif;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.profile-email {
+    font-weight: normal;
+    font-family: "Helvetica Neue", sans-serif;
+    letter-spacing: 1.5px;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+header {
+    background-color: #171B1D;
+}
+
+
+main {
+    width: 75%;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.name-container {
+    margin-top: auto;
+    margin-bottom: auto;
+
+}
+
+.profile {
+    background-color: #171B1D;
+    color: white;
+}
+
+.vertical-center {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.work-container {
+    background-color: #f4f5f6;
+    border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 4px 10px 0px;
+
+}
+
+.about-container {
+    fxont-size: 100%;
+}
+
+
+.profile-image {
+    height: 25vw;
+}
+
+.img-thumbnail {
+    transform: rotate(0deg);
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 4px 10px 0px;
+    border-radius: 15px;
+    border: 1px solid black;
+    width: 100%;
+}
+
+nav {
+    font-size: 100%;
+    text-transform: uppercase;
+    width: 45vh;
+    white-space: nowrap;
+}
+
+.nav-table {
+    width: 100%;
+    text-align: center;
+    height: 5.5vh;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-table-cell {
+    border-bottom: 1px solid gray;
+    border-radius: 3px;
+    background-color: #282828;
+}
+
+.nav-table-cell-active {
+    border-top: 1px solid gray;
+    border-right: 1px solid gray;
+    border-left: 1px solid gray;
+    border-radius: 3px;
+    /*background-color: #121311;*/
+    background-color: #171B1D;
+}
+
+.cell-menu {
+
+
+}
+
+.nav-container-top {
+    width: 100%;
+}
+
+.nav-container-right {
+    width: 100%;
+}
+
+.vertical-centered {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.nav-container-bottom {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+nav a:link {
+    text-decoration: none;
+    color: #eafc40
+}
+
+nav a:visited {
+    text-decoration: none;
+    color: #eafc40
+}
+
+.flex-container {
+    display: flex;
+}
+
+/*.................................................................................*/
+.profile-image-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.profile-image-right {
+
+}
+
+/*.................................................................................*/
+
+.profile-image-center {
+
+}
+
+
+/*BIG screen*/
+@media screen and (min-width: 369px) {
+    .profile-image-right {
+        display: block;
+    }
+
+    .profile-image-center {
+        display: none;
+    }
+
+    .profile-image-container {
+        /*justify-content: flex-end;*/
+        justify-content: center;
+    }
+
+    .nav-container-right {
+        display: block;
+    }
+
+    .nav-container-top {
+        display: none;
+    }
+
+    .profile-image {
+        height: 15vh;
+    }
+
+    .profile-name {
+        font-size: 32px;
+    }
+
+    .profile-email {
+        font-size: 19px;
+    }
+
+    body {
+        letter-spacing: 0.75pt;
+        line-height: 1.0;
+    }
+
+    .polaroid {
+        width: 150px;
+    }
+
+    .ProjectDescription {
+        font-size: calc(12px + 0.5vw);
+        line-height: 1.6;
+    }
+
+    .contact-container {
+        width: 60%;
+    }
+
+    .skill-list {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+    .skills-resume {
+        align-self: flex-start;
+    }
+
+
+}
+
+
+/*SMALL screen*/
+@media screen and (max-width: 370px) {
+    .profile-image-right {
+        display: none;
+    }
+
+    .profile-image-center {
+        display: block;
+    }
+
+    .profile-image-container {
+        justify-content: center;
+    }
+
+
+    .nav-container-right {
+        display: none;
+    }
+
+    .nav-container-top {
+        display: block;
+        font-size: 1.8vh;
+    }
+
+    .profile-image {
+        height: 25vw;
+    }
+
+    .profile-name {
+        font-size: 7vw;
+    }
+
+    .profile-email {
+        font-size: 5vw;
+    }
+
+    .work-container {
+        font-size: 90%;
+    }
+
+    main {
+        width: 80%;
+    }
+
+    .polaroid {
+        width: 45vw;
+    }
+
+    .ProjectDescription {
+        font-size: calc(12px + 0.1vw)
+    }
+
+    .contact-container {
+        width: 80%;
+    }
+
+    .skill-list {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    .skills-resume {
+        align-self: center;
+    }
+
+
+}
+
+.center-text{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-container {
+    padding: 5px 5px 5px 15px;
+    margin: 10px -10px 10px -10px;
+    border-radius: 3px;
+    line-height: normal;
+}
+
+.contact-container div {
+    font-size: 110%;
+}
+
+.contact-container a:link {
+    text-decoration: none;
+}
+
+.contact-container-left {
+    background-image: linear-gradient(to right, white, #f4f5f6)
+}
+
+.contact-container-right {
+    background-image: linear-gradient(to left, white, #f4f5f6)
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.button {
+    border: 1px solid black;
+    font-weight: bold;
+    border-radius: 3px;
+    padding: 5px;
+}
+
+.button-red {
+    background-color: #DE3163;
+    color: white;
+}
+
+.button-blue {
+    background-color: #3196de;
+    color: white;
+}
+
+.imgProject {
+    cursor: pointer;
+}
+
+.ProjectDescription {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-bottom: 5vh;
+
+}
+
+.ContentsProject {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    marxgin-top: 2vh;
+}
+
+.polaroid-container {
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 150px;
+    margin-top: 30px;
+}
+
+.polaroid {
+    background-color: #fff;
+    padding: 10px 10px 35px 10px;
+    border-radius: 5px;
+    /*// width: 150px;*/
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.rotate-15 {
+    transform: rotate(-15deg);
+}
+
+.rotate20 {
+    transform: rotate(20deg);
+}
+
+.rotate10 {
+    transform: rotate(10deg);
+}
+
+.flex-grid {
+    display: flex;
+}
+
+.menu-horizontal {
+    height: 25px;
+
+}
+
+
+
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    color: gray;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.form-email {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.img-resume {
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 4px 10px 0px;
+}
+
+.resume-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    margin-top: 50px;
+    background-color: #f4f5f6;
+    border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 4px 10px 0px;
+    padding: 30px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.skills-resume {
+    align-self: center;
+    font-weight: bolder;
+}
+
+.resume-link-container{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+}
+
+.skill-list{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.end-portfolio{
+    background: linear-gradient(to bottom, lightgray, white);
+    height: 100px;
+}
+
+.error{
+    background-color: orangered;
+}
+
+.logo-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+
+
+.footer-logo-container{
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    font-size: 80%;
+    margin-right: auto;
+    margin-left: auto;
+    border-top: 1px solid gray;
+}
+
+.copyright-message{
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.logo-img{
+    margin: 20px;
+    margin-bottom: 10px;
+    width: 5vh;
+}
+
+.main-content{
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.background-portfolio{
+    background-color: lightgray;
+}

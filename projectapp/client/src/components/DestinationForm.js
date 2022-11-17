@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { useNavigate } from "react-router-dom";
+import './css/betastyle.css';
 
 import { ADD_DESTINATION } from '../utils/mutations.js';
 import { QUERY_DESTINATIONS } from '../utils/queries';
 
 
 const DestinationForm = () => {
-  const history = useNavigate();
+  const navigate = useNavigate();
   
   const [formState, setFormState] = useState({
   });
@@ -43,7 +44,7 @@ const DestinationForm = () => {
         imageUrl: '',
       });
 
-      history.push('/dashboard');
+      navigate.push('/dashboard');
 
     } catch (err) {
       console.error(err);
