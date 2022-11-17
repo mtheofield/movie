@@ -1,6 +1,6 @@
 import Spinner from './Spinner';
 import { useQuery } from '@apollo/client';
-import StockCard from './StockCard';
+import StockCard from './login';
 import { GET_STOCKS } from '../queries/stockQueries';
 
 export default function Stocks() {
