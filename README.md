@@ -31,5 +31,4 @@ The following website will allow users to document the their travel experience. 
 * Application GitHub URL submitted.
 * GitHub repository contains application code.
  ![image](https://user-images.githubusercontent.com/106690423/202587529-ca6cc8b3-f371-432e-a2a4-776f41746741.png)
-
-  ![video](https://drive.google.com/file/d/15tAe9fTCFGE9u2qXzpsnp9J0qDFmkdUG/view)
+  Walk through video (https://drive.google.com/file/d/15tAe9fTCFGE9u2qXzpsnp9J0qDFmkdUG/view)
